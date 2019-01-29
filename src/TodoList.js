@@ -36,13 +36,17 @@ class TodoList extends Component{
   }
 
   handleDeleteItem = key => {
-    //return filtered array of all non-deleted items
+    //Item to be removed
+    let removedItem;
+    //return filtered array of all non-deleted items and update removedItem var
     const filteredItems = this.state.items.filter((item) =>{
-      return (item.key !== key);
-    });
-    //filter the removedItem
-    const removedItem = this.state.items.filter((item) =>{
-      return (item.key === key);
+      //add to filter array if key isnt going to be deleted, pull out item to be removed in variable
+      if(item.key !== key){
+        return true;
+      }else{
+        removedItem=item;
+        return false;
+      }
     });
 
     //console.log(removedItem);
